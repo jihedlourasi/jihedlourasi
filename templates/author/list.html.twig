@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+{% set nombre = 0 %}
+
+{% if name|length != 0 %}
+<ul>
+{% for authors in name %}
+<li>
+<a href="{{ path('app_details', {'id':authors.id,'username':authors.username,'email':authors.email,'nb_books':authors.nb_books}) }}">Détails</a>   
+    </li>
+  
+
+{% set nombre = nombre+authors.nb_books %}
+
+{{authors.username|upper}}
+
+
+ {%endfor%}
+ </ul>
+
+ <p>Le nombre des auteurs est : {{ name|length }}</p>
+ 
+
+ {%else%}
+tableau est vide 
+{%endif%}
+
+
+
+ le nombre totale de livres est={{nombre}}
+
+
+
+
+{% endblock %}
